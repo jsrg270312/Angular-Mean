@@ -1,55 +1,66 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from "@angular/common/http"
 import { Mascota } from "./../interface/Mascota";
-
+import  {map}  from "rxjs/operators"
 
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaService {
 
-  constructor() { }
+  private baseUrl: string =`https://cursos-mean-2.herokuapp.com/v1/mascota/`
+  constructor(private _http: HttpClient) { }
 
   private mascotas:Mascota[] = [
     {
       id:1,
-      mascota:"El gato Caminante",
+      nombre:"El gato Caminante",
       descripcion: "El único gato que cammina en dos  patas   UuUr",
-      url: "/assets/img/gato.gif"
+      foto: "/assets/img/gato.gif"
     },
     {
       id:2,
-      mascota:"El perro ",
+      nombre:"El perro ",
       descripcion: "El perro caminante",
-      url: "/assets/img/perro.jpg"
+      foto: "/assets/img/perro.jpg"
     },
     {
       id: 3,
-      mascota:"El pajaro",
+      nombre:"El pajaro",
       descripcion: "El pajaro volador",
-      url: "/assets/img/pajaro.gif"
+      foto: "/assets/img/pajaro.gif"
     }
   ];
 
   addMascota(mascota: Mascota) {
-    const id = (this.mascotas) ? this.mascotas.length + 1 : 1;
-    mascota.id = id
-    console.log(mascota)
-    this.mascotas.push(mascota)
+   // console.log(mascota,"mascota Form")
+    return this._http.post(this.baseUrl, mascota)
+    
+   // const id = (this.mascotas) ? this.mascotas.length + 1 : 1;
+   // mascota.id = id
+   // console.log(mascota)
+   // this.mascotas.push(mascota)
   }
-  getMascota(id: Mascota["id"]) {
-    return this.mascotas.filter(mascota=> mascota.id === id )[0]
+  getMascota(id: string) {
+    return this._http.get(this.baseUrl + id)
+
+    //return this.mascotas.filter(mascota=> mascota.id === id )[0]
+
 
   }
   listMascotas() {
-    return this.mascotas;
+
+    return this._http.get(this.baseUrl)
+         //   .pipe(map(mascota => mascota))
+    //return this.mascotas
   }
   updateMascota() {
 
   }
-  deleteMascota(id: Mascota["id"]) {
-    this.mascotas = this.mascotas.filter(mascota=> mascota.id !== id )
-    console.log(this.mascotas)
-    return this.mascotas
+  deleteMascota(id: string) {
+    //this.mascotas = this.mascotas.filter(mascota=> mascota.id !== id )
+    //console.log(this.mascotas)
+    //return this.mascotas
+    return this._http.delete(this.baseUrl + id)
   }
 }

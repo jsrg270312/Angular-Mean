@@ -3,6 +3,7 @@ import { Component, OnInit, OnChanges} from '@angular/core';
 import { Mascota } from "./../../interface/Mascota";
 import { MascotaService } from './../../serives/mascota.service';
 
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -21,18 +22,32 @@ export class UsuarioComponent implements OnInit, OnChanges {
   //private url: string = "/assets/img/gato.gif";
   private mascotas: Mascota[]
   constructor(private mascotaService: MascotaService) {
-    this.mascotas = mascotaService.listMascotas();
+    mascotaService.listMascotas()
+      .subscribe((mascotas: any) =>{
+
+        if(!mascotas.error) this.mascotas = mascotas.data
+
+      })
    }
 
   ngOnInit() {
   }
 
-  borrar(id: Mascota['id']){
-    
-    this.mascotas = this.mascotaService.deleteMascota(id)
+  borrar(id: string){
+    this.mascotaService.deleteMascota(id)
+    .subscribe((mascotas : any) =>{
+      console.log("res: ", mascotas)
+      if(!mascotas.error) {
+        this.mascotaService.listMascotas()
+          .subscribe((m:any) => {
+            
+            this.mascotas = (!m.error) ? m.data : this.mascotas
+          })
+      }
+    })
   }
   ngOnChanges(){
-    this.mascotas = this.mascotaService.listMascotas();
+    //this.mascotaService.listMascotas()
   }
 
 }

@@ -1,6 +1,6 @@
 export interface Mascota {
 	id?: number;
-	mascota: string;
+	nombre: string;
 	descripcion: string;
-	url?: string;
+	foto?: string;
 }

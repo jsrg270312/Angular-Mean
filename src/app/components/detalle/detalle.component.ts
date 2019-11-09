@@ -11,12 +11,23 @@ import { MascotaService } from './../../serives/mascota.service';
 export class DetalleComponent implements OnInit {
 
   private mascota: Mascota
-  constructor(private route: ActivatedRoute, private mascotaServiece: MascotaService) { }
+  constructor(private route: ActivatedRoute, private mascotaServiece: MascotaService) { 
+    this.getDetalles()
+
+  }
 
   ngOnInit() {
     console.log("params", this.route.snapshot.paramMap.get('id'))
-    this.mascota = this.mascotaServiece
-                  .getMascota(Number(this.route.snapshot.paramMap.get('id')))
+
+  }
+
+  getDetalles() {
+    this.mascotaServiece
+      .getMascota(this.route.snapshot.paramMap.get('id'))
+        .subscribe((mascota: any) => {
+        if(!mascota.error) this.mascota = mascota.data
+      }, () => console.log("error:v")
+    )
   }
 
 }

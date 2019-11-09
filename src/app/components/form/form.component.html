@@ -3,11 +3,15 @@
 	<form [formGroup]="checkoutForm" (ngSubmit)="addMascota(checkoutForm.value)">
 		<div class="form-group">
 			<label for="">Nombre Mascota</label>
-			<input type="text" formControlName="mascota"class="form-control" id="" placeholder="Nombre mascota">
+			<input type="text" formControlName="nombre" name="nombre" class="form-control" id="" placeholder="Nombre mascota">
 		</div>
 		<div class="form-group">
 			<label for="">Descripcion Mascota</label>
-			<input type="text" formControlName="descripcion" class="form-control" id="" placeholder="Descripcion">
+			<input type="text" formControlName="descripcion" name="descripcion" class="form-control" id="" placeholder="Descripcion">
+		</div>
+		<div class="form-group">
+			<label for="">Ruta</label>
+			<input type="text" formControlName="foto" name="foto" class="form-control" id="" placeholder="Ruta">
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 		<button type="button" name="button" class="btn btn-info" (click)="triggerModal">Actualizar</button>

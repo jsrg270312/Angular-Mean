@@ -15,8 +15,9 @@ export class FormComponent implements OnInit {
   private checkoutForm
   constructor(private mascotaService: MascotaService, private formBuilder: FormBuilder) { 
   this.checkoutForm = this.formBuilder.group({
-    mascota: '',
-    descripcion: ''
+    nombre: '',
+    descripcion: '',
+    foto: ''
   })
   }
 
@@ -24,13 +25,19 @@ export class FormComponent implements OnInit {
   }
   addMascota(m) {
     const mascota: Mascota = {
-      mascota: this.checkoutForm.value.mascota,
+      nombre: this.checkoutForm.value.nombre,
       descripcion: this.checkoutForm.value.descripcion,
+      foto: this.checkoutForm.value.foto,
     }
     this.mascotaService.addMascota(mascota)
+      .subscribe(
+        (success : any) => { console.log(success.message)  },
+        () => {},
+        () => {} 
+      )
   }
   triggerModal() {
-    this.modal = true
+   // this.modal = true
   }
 
 }
