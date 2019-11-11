@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
-import { Mascota } from "./../interface/Mascota";
+import { Mascota } from "./../interface/Mascota"
 import  {map}  from "rxjs/operators"
 
 @Injectable({
@@ -11,27 +11,7 @@ export class MascotaService {
   private baseUrl: string =`https://cursos-mean-2.herokuapp.com/v1/mascota/`
   constructor(private _http: HttpClient) { }
 
-  private mascotas:Mascota[] = [
-    {
-      id:1,
-      nombre:"El gato Caminante",
-      descripcion: "El único gato que cammina en dos  patas   UuUr",
-      foto: "/assets/img/gato.gif"
-    },
-    {
-      id:2,
-      nombre:"El perro ",
-      descripcion: "El perro caminante",
-      foto: "/assets/img/perro.jpg"
-    },
-    {
-      id: 3,
-      nombre:"El pajaro",
-      descripcion: "El pajaro volador",
-      foto: "/assets/img/pajaro.gif"
-    }
-  ];
-
+  
   addMascota(mascota: Mascota) {
    // console.log(mascota,"mascota Form")
     return this._http.post(this.baseUrl, mascota)
