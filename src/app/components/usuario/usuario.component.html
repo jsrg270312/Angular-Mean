@@ -1,12 +1,16 @@
-
-<div class = "card">
-	<div class="card" style="width: 18rem;" *ngFor="let mascota of mascotas">
+<div class="card text-center mb-3 border-primary" *ngFor="let mascota of mascotas">
+	<div class="row no-gutters">
+		<div class="col-md-4">
 		<img [src]="mascota.foto" class="card-img-top" alt="...">
+		</div>
+		<div class="col-md-8">
 		<div class="card-body">
-		  <h5 class="card-title">{{mascota.nombre}}</h5>
-		  <p class="card-text">{{mascota._id}}</p>
-		  <a [routerLink]="['detalles',mascota._id]" class="btn btn-success">Detalle</a>
-		  <a (click)="borrar(mascota._id)" class="btn btn-danger">Eliminar</a>
+				<h5 class="card-title">{{mascota.nombre}}</h5>
+				<small class="text-muted">{{mascota._id}}</small>
+				<p class="card-text">{{mascota.descripcion}}</p>
+		</div>
+			<a [routerLink]="['detalles',mascota._id]" class="btn btn-outline-success">Detalle</a>
+			<a (click)="borrar(mascota._id)" class="btn btn-outline-danger">Eliminar</a>
 		</div>
 	</div>
-<div>
+</div>

@@ -1,5 +1,5 @@
 
-<div class="col-md-6">
+
 	<form [formGroup]="checkoutForm" (ngSubmit)="addMascota(checkoutForm.value)">
 		<div class="form-group">
 			<label for="">Nombre Mascota</label>
@@ -13,10 +13,8 @@
 			<label for="">Ruta</label>
 			<input type="text" formControlName="foto" name="foto" class="form-control" id="" placeholder="Ruta">
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
-		<button type="button" name="button" class="btn btn-info" (click)="triggerModal">Actualizar</button>
+		<button type="submit" class="btn btn-outline-primary">Agregar</button>
 	</form>
-</div>
 
 <app-modal>[modal]="triggerModal()"</app-modal>
 
