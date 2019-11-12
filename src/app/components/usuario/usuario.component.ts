@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges} from '@angular/core';
+import {Router} from "@angular/router"
 
 import { Mascota } from "./../../interface/Mascota";
 import { MascotaService } from './../../serives/mascota.service';

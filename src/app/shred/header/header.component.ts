@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UsuarioService } from "./../../serives/usuario.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() logout: boolean = false
+  constructor(private usuarioService: UsuarioService) { 
+    this.validate()
+  }
 
   ngOnInit() {
+  this.validate()
+  }
+validate(){
+  if(localStorage.getItem("userData") != null) this.logout = true
+}
+  borrarLocalStorage(){
+  this.usuarioService.deleteStorage()
+    this.logout = false
   }
 
 }

@@ -9,6 +9,7 @@ import  {map}  from "rxjs/operators"
 export class MascotaService {
 
   private baseUrl: string =`https://cursos-mean-2.herokuapp.com/v1/mascota/`
+
   constructor(private _http: HttpClient) { }
 
   
@@ -23,14 +24,13 @@ export class MascotaService {
   }
   getMascota(id: string) {
     return this._http.get(this.baseUrl + id)
-
-    //return this.mascotas.filter(mascota=> mascota.id === id )[0]
-
+      .pipe(map((data: any )=> data))
 
   }
-  listMascotas() {
 
+  listMascotas() {
     return this._http.get(this.baseUrl)
+      .pipe(map(data => data))
          //   .pipe(map(mascota => mascota))
     //return this.mascotas
   }

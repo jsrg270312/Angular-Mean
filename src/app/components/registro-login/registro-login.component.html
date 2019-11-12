@@ -1,0 +1,13 @@
+<ngb-tabset type="pills">
+    <ngb-tab title="Login">
+        <ng-template ngbTabContent>
+            <app-registro></app-registro>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>registro</b></ng-template>
+        <ng-template ngbTabContent>
+            <app-registro [register]="true"></app-registro>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>
