@@ -2,7 +2,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
-
+import {RouterModule} from "@angular/router"
+import {NgbModule } from "@ng-bootstrap/ng-bootstrap"
 
 //Componentes
 import { UsuarioComponent } from './../components/usuario/usuario.component';
@@ -13,6 +14,8 @@ import { RegistroLoginComponent } from './../components/registro-login/registro-
 import { ControlesComponent } from './../components/controles/controles.component';
 import { ListaComponent } from './../components/lista/lista.component';
 
+import { NoimagePipe } from './../pipis/noimage.pipe';
+
 
 @NgModule({
     declarations: [
@@ -22,12 +25,15 @@ import { ListaComponent } from './../components/lista/lista.component';
         RegistroComponent,
         RegistroLoginComponent,
         ControlesComponent,
-        ListaComponent
+        ListaComponent,
+        NoimagePipe
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        RouterModule,
+        NgbModule
     ],
     exports:[
         UsuarioComponent,
@@ -36,7 +42,8 @@ import { ListaComponent } from './../components/lista/lista.component';
         RegistroComponent,
         RegistroLoginComponent,
         ControlesComponent,
-        ListaComponent
+        ListaComponent,
+        NoimagePipe
     ],
     providers: [],
   })

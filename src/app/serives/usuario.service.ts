@@ -14,6 +14,10 @@ export class UsuarioService {
 
   constructor(private _http: HttpClient) { }
 
+  getUsers(){
+    return this._http.get(this.baseUrl)
+  }
+
   addUsuario(user: InputUsuario) {
   console.log(user);
     return this._http.post(this.baseUrl,user)

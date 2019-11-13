@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentsModule} from "./../components/components.module"
 import {PagesRoutesModule} from "./../pages/pagesroutes.module";
+import { ShredModule  } from "./../shred/shred.module"
+
 
 //Pages
 import { DetalleComponent } from './detalle/detalle.component';
@@ -11,6 +13,7 @@ import { NotfoundpagesComponent } from './notfoundpages/notfoundpages.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { PagesComponent } from './pages.component';
+import { from } from 'rxjs';
 
 
 @NgModule({
@@ -25,14 +28,16 @@ import { PagesComponent } from './pages.component';
     imports: [
       CommonModule,
       ComponentsModule,
-      PagesRoutesModule
+      PagesRoutesModule,
+      ShredModule
     ],
     exports: [
         DetalleComponent,
         MainComponent,
         NotfoundpagesComponent,
         DashboardComponent,
-        CarritoComponent 
+        CarritoComponent,
+        
     ],
     providers: [],
   })
