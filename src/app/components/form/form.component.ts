@@ -17,7 +17,8 @@ export class FormComponent implements OnInit {
   this.checkoutForm = this.formBuilder.group({
     nombre: '',
     descripcion: '',
-    foto: ''
+    foto: '',
+    precio: ''
   })
   }
 
@@ -28,6 +29,7 @@ export class FormComponent implements OnInit {
       nombre: this.checkoutForm.value.nombre,
       descripcion: this.checkoutForm.value.descripcion,
       foto: this.checkoutForm.value.foto,
+      precio: this.checkoutForm.value.precio,
     }
     this.mascotaService.addMascota(mascota)
       .subscribe(
@@ -35,6 +37,7 @@ export class FormComponent implements OnInit {
         () => {},
         () => {} 
       )
+      this.checkoutForm.reset()
   }
   triggerModal() {
    // this.modal = true

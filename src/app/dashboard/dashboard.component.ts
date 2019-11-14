@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styles: []
 })
-export class DashboardComponent implements OnInit {
 
+export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {

@@ -3,25 +3,27 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">#</th>
-    <th scope="col">Email</th>
-    <th scope="col">UserType</th>
-    <th scope="col">Active</th>
+    <th scope="col" *ngfor="let key of keys">{{key}}</th>
+
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let usuario of usuarios">
+  <tr *ngFor="let element of elements; let i of index">
     <th scope="row"></th>
     <td>
-      {{ usuario.email }}
+      {{ element[i] }}
     </td>
-    <td>{{ usuario.userType}}</td>
-    <td>{{ usuario.active}}</td>
+    <td>{{ element.userType}}</td>
+    <td>{{ element.active}}</td>
+    <td>
+      <button class="nav-item btn btn-outline-primary">Actualizar</button>
+      <button class="nav-item btn btn-outline-danger">Eliminar</button>
+    </td>
   </tr>
   </tbody>
 </table>
 
-<div class="d-flex justify-content-between p-2">
+<!-- <div class="d-flex justify-content-between p-2">
   <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
   </ngb-pagination>
 
@@ -29,5 +31,7 @@
     <option [ngValue]="2">2 items per page</option>
     <option [ngValue]="4">4 items per page</option>
     <option [ngValue]="6">6 items per page</option>
+    
+
   </select>
-</div>
+</div> -->

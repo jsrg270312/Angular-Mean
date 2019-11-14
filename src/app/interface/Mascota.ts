@@ -3,4 +3,5 @@ export interface Mascota {
 	nombre: string;
 	descripcion: string;
 	foto?: string;
+	precio: number;
 }

@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { RootRoutingModule } from './routes.module';
 import {HttpClientModule} from "@angular/common/http"
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DashboardModule} from "./dashboard/dashboard.module"
+import { ShredModule  } from "./shred/shred.module"
 
 import {PagesModule} from "./pages/pages.module";
 
@@ -23,7 +25,9 @@ import { AppComponent } from './app.component';
     RootRoutingModule,
     HttpClientModule,
     NgbModule,
-    PagesModule
+    PagesModule,
+    DashboardModule,
+    ShredModule
   ],
   providers: [],
   bootstrap: [AppComponent]

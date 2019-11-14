@@ -10,18 +10,14 @@ import { ShredModule  } from "./../shred/shred.module"
 import { DetalleComponent } from './detalle/detalle.component';
 import { MainComponent } from './main/main.component';
 import { NotfoundpagesComponent } from './notfoundpages/notfoundpages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { PagesComponent } from './pages.component';
-import { from } from 'rxjs';
-
 
 @NgModule({
     declarations: [
       DetalleComponent,
       MainComponent,
       NotfoundpagesComponent,
-      DashboardComponent,
       CarritoComponent,
       PagesComponent
     ],
@@ -29,13 +25,12 @@ import { from } from 'rxjs';
       CommonModule,
       ComponentsModule,
       PagesRoutesModule,
-      ShredModule
+      ShredModule,
     ],
     exports: [
         DetalleComponent,
         MainComponent,
         NotfoundpagesComponent,
-        DashboardComponent,
         CarritoComponent,
         
     ],

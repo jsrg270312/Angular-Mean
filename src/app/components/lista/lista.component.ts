@@ -98,30 +98,18 @@ const COUNTRIES: Country[] = [
 
 
 export class ListaComponent implements OnInit {
-private usuarios : Usuario []
-  constructor( private usuarioService: UsuarioService) {
-    this.usuarioService.getUsers()
-      .subscribe(
-      (usuarios : any) => { 
-        console.log(usuarios.data)
-        this.usuarios = usuarios.data
-        },
-      (err: any) => {console.log(err)},
-      () => {} 
-    )
-   }
-  page = 1;
-  pageSize = 4;
-  collectionSize = COUNTRIES.length;
-
-  get countries(): Country[] {
-    return COUNTRIES
-      .map((country, i) => ({id: i + 1, ...country}))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-  }
+  @Input() datos: any
+  private keys
+  private elements
+private usuarios : Usuario [] = []
+  constructor( private usuarioService: UsuarioService) {}
 
   ngOnInit() {
+    this.setData()
   }
 
-
+  setData() {
+    this.keys = this.datos.keys
+    this.elements = this.datos.datos
+  }
 }
