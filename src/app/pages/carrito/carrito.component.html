@@ -1,1 +1,27 @@
-<p>carrito works!</p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">nombre</th>
+      <th scope="col">precio</th>
+      <th scope="col">descripcion</th>
+      <th scope="col">foto</th>
+      <th scope="col">tipo</th>
+  
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let element of elements;">
+      <th scope="row">{{element.nombre }}</th>
+      <td>
+        {{ element.precio }}
+      </td>
+      <td>{{ element.descripcion }}</td>
+      <td>{{ element.foto  }}</td>
+      <td>{{ element.mascotaType }}</td>
+      <td>
+        <button (click)="deleteElement(element._id)" class="nav-item btn btn-outline-danger">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  

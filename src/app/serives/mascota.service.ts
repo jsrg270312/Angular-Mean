@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
 import { Mascota } from "./../interface/Mascota"
 import  {map}  from "rxjs/operators"
+import { element } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import  {map}  from "rxjs/operators"
 export class MascotaService {
 
   private baseUrl: string =`http://localhost:9000/v1/mascota/`
-
+  private lista = {arreglo:[]}
   constructor(private _http: HttpClient) { }
 
   
@@ -42,5 +43,36 @@ export class MascotaService {
     //console.log(this.mascotas)
     //return this.mascotas
     return this._http.delete(this.baseUrl + id)
+  }
+
+  addStorageShop(id: Object){    
+
+    if(JSON.parse(localStorage.getItem("lista")) != null){
+      const listaObj = JSON.parse(localStorage.getItem("lista"))
+      this.lista.arreglo[listaObj.arreglo.length] = id
+      localStorage.setItem("lista",JSON.stringify(this.lista))
+    }else {
+      this.lista.arreglo[0] = id
+      localStorage.setItem("lista",JSON.stringify(this.lista))
+    }
+    return JSON.parse(localStorage.getItem("lista"))
+  }
+
+  getStorageShop() {
+    return JSON.parse(localStorage.getItem("lista")).arreglo
+  }
+
+  deleteElementStorageShop(id: string) {
+    const elements = JSON.parse(localStorage.getItem("lista")).arreglo
+    if(elements != null){
+      const newElement = elements.filter(element => element._id != id );
+      //Eliminar lista actual
+      localStorage.removeItem("lista")
+      this.lista.arreglo = newElement
+      localStorage.setItem("lista",JSON.stringify(this.lista))
+      return newElement 
+    }else{
+      return []
+    }
   }
 }

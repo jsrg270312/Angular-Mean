@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioService } from "./../../serives/usuario.service";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { UsuarioService } from "./../../serives/usuario.service";
 export class HeaderComponent implements OnInit {
 
   @Input() logout: boolean = false
-  constructor(private usuarioService: UsuarioService) { 
+  constructor(private usuarioService: UsuarioService,private route: ActivatedRoute) { 
     this.validate()
   }
 

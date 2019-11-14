@@ -27,7 +27,9 @@ export class UsuarioService {
     return this._http.post(`${this.baseUrl}${user.email}/login`,user)
                       .pipe(map((data: any) => {
                         if(data && !data.error) {
+                          console.log(data,"lo que regresa despues de login ")
                           localStorage.setItem("userData",JSON.stringify(data.data))
+                          localStorage.setItem("token",JSON.stringify(data.token))
                           console.log("info LOCAL STORAGE",JSON.parse(localStorage.getItem("userData")))
                           return data
                         }

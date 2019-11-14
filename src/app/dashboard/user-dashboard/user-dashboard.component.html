@@ -1,1 +1,1 @@
-<app-lista></app-lista>
+<app-lista (eliminarLista)="deleteListaUser($event)" *ngIf='data' [data]="data"></app-lista>

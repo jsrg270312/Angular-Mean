@@ -14,7 +14,7 @@ export class ProductosDashboardComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log("data ",this.data)
+    this.getProductos()
   }
 
   getProductos (){
@@ -22,7 +22,7 @@ export class ProductosDashboardComponent implements OnInit {
     .subscribe(
       (success : any) => { 
         this.data = {
-          keys: ["nombre", "precio", "foto", "tipo"],
+          keys: ["nombre", "precio", "foto", "tipo", "Operaciones"],
           datos: success.data}
         },
       (err: any) => {console.log(err)},

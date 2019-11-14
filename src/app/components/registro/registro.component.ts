@@ -74,7 +74,7 @@ export class RegistroComponent implements OnInit {
 
     console.log(this.registroLogin.controls.email.pristine,"esto es pristine de emaildespues de submit")
     this.registroLogin.reset()
-    this.router.navigate([''])
+    this.router.navigate(['dashboard','user'])
     
     //console.log(this.registroLogin.valid,"solo devuelve truo o false")
   }

@@ -1,4 +1,4 @@
-<div class="card text-center mb-3 border-primary" *ngFor="let mascota of mascotas">
+<div class="card text-center border-primary" *ngFor="let mascota of mascotas">
 	<div class="row no-gutters">
 		<div class="col-md-4">
 		<img [src]="mascota.foto" class="card-img-top" alt="...">
@@ -11,6 +11,7 @@
 		</div>
 			<a [routerLink]="['detalles',mascota._id]" class="btn btn-outline-success">Detalle</a>
 			<a (click)="borrar(mascota._id)" class="btn btn-outline-danger">Eliminar</a>
+			<a (click)="comprar(mascota)" class="btn btn-outline-info">Comprar</a>
 		</div>
 	</div>
 </div>

@@ -1,23 +1,22 @@
-<p>You can bind our <code>NgbPagination</code> component with slicing the data list</p>
-
+<button class="nav-item btn btn-outline-success">Agregar</button>
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col" *ngfor="let key of keys">{{key}}</th>
+    <th scope="col" *ngFor="let key of keys">{{key}}</th>
 
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let element of elements; let i of index">
-    <th scope="row"></th>
+  <tr *ngFor="let element of elements;">
+    <th scope="row">{{element.nombre || element._id}}</th>
     <td>
-      {{ element[i] }}
+      {{ element.precio || element.email }}
     </td>
-    <td>{{ element.userType}}</td>
-    <td>{{ element.active}}</td>
+    <td>{{ element.foto || element.userType }}</td>
+    <td>{{ element.mascotaType || element.active}}</td>
     <td>
       <button class="nav-item btn btn-outline-primary">Actualizar</button>
-      <button class="nav-item btn btn-outline-danger">Eliminar</button>
+      <button (click)="eliminarLista(element.id)" class="nav-item btn btn-outline-danger">Eliminar</button>
     </td>
   </tr>
   </tbody>
@@ -31,7 +30,5 @@
     <option [ngValue]="2">2 items per page</option>
     <option [ngValue]="4">4 items per page</option>
     <option [ngValue]="6">6 items per page</option>
-    
-
   </select>
 </div> -->

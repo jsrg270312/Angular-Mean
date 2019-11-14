@@ -47,6 +47,13 @@ export class UsuarioComponent implements OnInit, OnChanges {
       }
     })
   }
+
+  comprar(data: Object){
+    console.log("le dio click a comprar", data)
+    const lista = this.mascotaService.addStorageShop(data)
+    console.log("lista de mascotas agregada", lista)
+
+  }
   ngOnChanges(){
     //this.mascotaService.listMascotas()
   }
